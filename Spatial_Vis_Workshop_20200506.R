@@ -14,6 +14,10 @@ library(mapview)     # Interactive maps for quick visualization
 # Other
 library(tidyverse)   # Interacts well with sf objects
 
+# Set working directory to whatever folder contains the workshop materials
+# The "Rasters" and "Shapefiles" folders should be subfolders in this directory
+setwd("~/Your_Path/Workshop_Folder")
+
 #----------------------------------------------
 # PART 1 - LOADING AND VISUALIZING SPATIAL DATA
 
