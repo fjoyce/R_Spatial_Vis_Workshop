@@ -24,7 +24,7 @@ library(tidyverse)   # Interacts well with sf objects
 # From shape files
 vegPol <- st_read(dsn = "ShapeFiles/VegLayer", layer = 'VegLayer') # Polygons representing vegetation classes
 roadLn <- st_read(dsn = "ShapeFiles/RoadLayer", layer = 'RoadLayer') # Single road running through focal area
-# Examine projection
+# Examine coordinate system
 st_crs(vegPol)
 st_crs(roadLn)
 
@@ -228,7 +228,8 @@ vegExtract <- raster::extract(terrStack[[2]], vegPol2[5:10,]) %>%
 # Covert polygon to raster
 
 # First get numeric value for vegetation class
-vegPol$ClassNum <- as.numeric(vegPol$VegClass) + 1 # Shrub = 2; Tree = 3
+# Shrub = 2; Tree = 3
+vegPol$ClassNum <- as.numeric(vegPol$VegClass) + 1 
 
 # Create an empty raster with same extent as vegPol
 vr <- raster(vegPol, res = 30) # Raster cell size (resolution) = 30x30
