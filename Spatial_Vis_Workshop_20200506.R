@@ -16,7 +16,9 @@ library(tidyverse)   # Interacts well with sf objects
 
 # Set working directory to whatever folder contains the workshop materials
 # The "Rasters" and "Shapefiles" folders should be subfolders in this directory
-setwd("~/Your_Path/Workshop_Folder")
+here()
+
+#setwd("~/Your_Path/Workshop_Folder")
 
 #----------------------------------------------
 # PART 1 - LOADING AND VISUALIZING SPATIAL DATA
@@ -164,6 +166,8 @@ vegPol$RoadDist<-as.numeric(rdist) # Add to vegPol dataframe
 # Visualize gradient in distance from road
 ggplot(data = vegPol) +
   geom_sf(aes(fill = RoadDist), color = 'black')
+
+#plot in base R
 plot(vegPol['RoadDist'])
 
 
@@ -201,7 +205,7 @@ vegPol2 %>%
   plot(add = T, 
        border = 'goldenrod', lwd = 3)
 
-# Each set of buffers is it's own sf data frame, retaining all other columns
+# Each set of buffers is its own sf data frame, retaining all other columns
 st_buffer(vegPol[1:10,], 50)
 
 #---------------
